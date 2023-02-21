@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
+import ChildMemo from './ChildMemo'
+import PureClassComponent from './PureClassComponent'
+import PureComponent from './PureComponent'
+import ShouldComponentUpdate from './ShouldComponentUpdate'
 
-function App() {
+export const App = () => {
+  const [isMuslim,setIsMuslim] = useState(false)
+  const [login,setLogin] = useState(false)
+  const [name,setName] = useState("ali")
+  const [value,setValue] = useState(false)
+  console.log("App rednered")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <button onClick = {()=>setIsMuslim(!isMuslim)}>chande App stae</button>
+      <button onClick = {()=>setLogin(!login)}>chande child stae</button>
+      <button onClick = {()=>setName("she jee")}>change  pure component child stae</button>
+      <button onClick = {()=>setValue(!value)}>change should update props stae</button>
+      
+   <ChildMemo login={login}/>
+   <PureComponent name={name} />
+   <PureClassComponent name={name} />
+   <ShouldComponentUpdate value={value} />
     </div>
-  );
+  )
 }
-
-export default App;
